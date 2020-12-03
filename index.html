@@ -27,7 +27,7 @@
             <p>TITOLO ORIGINALE : {{ film.original_title }}</p>
             <!-- <p>LINGUA : {{ film.original_language }}</p> -->
             <!-- <p>VOTO : {{ film.vote_average }}</p> -->
-            <img :src='"img/" + film.original_language + ".svg"' alt="">
+            <img :src='"img/" + film.original_language + ".svg"' onerror="this.onerror=null; this.src='img/default.svg'" alt="">
 
             <!-- VOTO IN STELLINE -->
             <p>VOTO : <span v-for="item in film.stelle"><i :class="item" aria-hidden="true"></i></span></p>
