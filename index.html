@@ -6,7 +6,7 @@
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/f9888a3f24.css">
     <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -21,14 +21,19 @@
         <input type="text" placeholder="Cerca titolo" v-model="searchFilm">
 
         <button @click="searchClick">VAI</button>
-        
-        <div v-for="film in films">
-            <p>TITOLO => {{ film.title }}</p>
-            <p>TITOLO ORIGINALE => {{ film.original_title }}</p>
-            <p>LINGUA => {{ film.original_language }}</p>
-            <p>VOTO => {{ film.vote_average }}</p>
+
+        <div v-for="(film, index) in films">
+            <p>TITOLO : {{ film.title }}</p>
+            <p>TITOLO ORIGINALE : {{ film.original_title }}</p>
+            <p>LINGUA : {{ film.original_language }}</p>
+            <p>VOTO : {{ film.vote_average }}</p>
+
+            <!-- VOTO IN STELLINE -->
+            <i v-for="star in stars" :class="star" aria-hidden="true"></i>
+
+
+            <!-- <p>DESCRIZIONE : {{ film.overview }}</p> -->
             <hr>
-            <!-- <p>{{ film.overview }}</p> -->
         </div>
 
     </div>
