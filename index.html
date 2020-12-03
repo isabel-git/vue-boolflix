@@ -26,10 +26,10 @@
             <p>TITOLO : {{ film.title }}</p>
             <p>TITOLO ORIGINALE : {{ film.original_title }}</p>
             <p>LINGUA : {{ film.original_language }}</p>
-            <p>VOTO : {{ film.vote_average }}</p>
+            <!-- <p>VOTO : {{ film.vote_average }}</p> -->
 
             <!-- VOTO IN STELLINE -->
-            <i v-for="star in stars" :class="star" aria-hidden="true"></i>
+            <p>VOTO : <span v-for="item in film.stelle"><i :class="item" aria-hidden="true"></i></span></p>
 
 
             <!-- <p>DESCRIZIONE : {{ film.overview }}</p> -->

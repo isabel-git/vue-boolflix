@@ -29,21 +29,24 @@ var app = new Vue({
     voto: function () {
 
       let piene;
-      console.log(this.films.length);
+      // console.log(this.films.length);
       
       for (let j = 0; j < this.films.length; j++) {
         
         piene = Math.round(this.films[j].vote_average / 2);
         
-        console.log('le stelle piene sono: ',piene);
+        // console.log('le stelle piene sono: ',piene);
   
-        for (let i = 1; i <= piene; i++) {
-          this.stars.push("fa fa-star")
+        for (let i = 1; i <= 5; i++) {
+          if (i <= piene) {
+            
+            this.stars.push("fa fa-star")
+          }else {
+            this.stars.push("fa fa-star-o")
+          }
         }
-        let obj = {stelle: this.stars}
-        console.log(obj);
-        // this.films[j].push({...obj}) ////////// NON FUNZIONA IL PUSH E NON SO PERCHÈ //////////
 
+        this.films[j].stelle = this.stars
         this.stars = [];
       }
     }
