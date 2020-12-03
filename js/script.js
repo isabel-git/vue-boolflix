@@ -1,4 +1,4 @@
-
+const apiKey = "bbed237dc6562aa068a11a0bbcb33c30";
 var app = new Vue({
   el: '#app',
   data: {
@@ -10,9 +10,8 @@ var app = new Vue({
 
   methods: {
     searchClick: function () {
-      let apiFilms = "https://api.themoviedb.org/3/search/movie?api_key=bbed237dc6562aa068a11a0bbcb33c30&language=it-IT&query=" + this.searchFilm;
-      let apiTvSeries = "https://api.themoviedb.org/3/search/tv?api_key=bbed237dc6562aa068a11a0bbcb33c30&language=it-IT&page=1%20di%20carta&include_adult=false&query=" + this.searchFilm;
-
+      let apiFilms = "https://api.themoviedb.org/3/search/movie?api_key="+ apiKey +"&language=it-IT&query=" + this.searchFilm;
+      let apiTvSeries = "https://api.themoviedb.org/3/search/tv?api_key="+ apiKey +"&language=it-IT&page=1%20di%20carta&include_adult=false&query=" + this.searchFilm;
       
       if (this.searchFilm !== "") { // evita il click vuoto
 
@@ -22,33 +21,28 @@ var app = new Vue({
         axios.all([rispostaOne, rispostaTwo])
           .then(risposta => {
 
-            this.films = risposta[0].data.results;
+            this.films = risposta[0].data.results; // rispostaOne
             console.log(this.films);
 
-            this.tvSeries = risposta[1].data.results;
+            this.tvSeries = risposta[1].data.results; // rispostaTwo
             console.log(this.tvSeries);
 
-            this.voto();
+            this.voto(this.tvSeries); 
+            this.voto(this.films);
           });
       }
     },
-    voto: function () {
+    voto: function (serieFilm) { // STELLINE
+      for (let j = 0; j < serieFilm.length; j++) {
 
-      for (let j = 0; j < this.films.length; j++) {
-
-        let piene = Math.round(this.films[j].vote_average / 2);
+        let piene = Math.round(serieFilm[j].vote_average / 2); // trasformo il voto in base 5
 
         for (let i = 1; i <= 5; i++) {
-          // if (i <= piene) {
-          //   this.stars.push("fa fa-star")
-          // }else {
-          //   this.stars.push("fa fa-star-o")
-          // }
-          i <= piene ? this.stars.push("fa fa-star") : this.stars.push("fa fa-star-o");
+          i <= piene ? this.stars.push("fa fa-star") : this.stars.push("fa fa-star-o"); // condizione che sceglie se la stella è piena o vuota
         }
 
-        this.films[j].stelle = this.stars
-        this.stars = [];
+        serieFilm[j].stelle = this.stars // inserisco stars
+        this.stars = []; // pulisco stars
       }
     }
 

@@ -17,46 +17,37 @@
 
     <div id="app">
 
-
         <input type="text" placeholder="Cerca titolo" v-model="searchFilm">
 
         <button @click="searchClick">VAI</button>
 
         <main>
 
+            <!-------- MOUVIE -------->
             <h1>movie</h1>
             <div class="flex">
 
                 <a class="box movie" v-for="(film, index) in films">
                     <h2>{{ film.title }}</h2>
                     <p><i>{{ film.original_title }}</i></p>
-                    <!-- <p>LINGUA : {{ film.original_language }}</p> -->
-                    <!-- <p>VOTO : {{ film.vote_average }}</p> -->
                     <img :src='"img/" + film.original_language + ".svg"' onerror="this.onerror=null; this.src='img/default.svg'" alt="">
-        
                     <!-- VOTO IN STELLINE -->
                     <p>VOTO : <span v-for="item in film.stelle"><i :class="item" aria-hidden="true"></i></span></p>
-        
-        
                     <!-- <p>DESCRIZIONE : {{ film.overview }}</p> -->
                 </a>
 
             </div>
 
+            <!-------- SERIE TV -------->
             <h1>serie tv</h1>
             <div class="flex">
 
                 <a class="box series" v-for="(serie, index) in tvSeries">
                     <h2>{{ serie.name }}</h2>
                     <p><i>{{ serie.original_name }}</i></p>
-                    <!-- <p>LINGUA : {{ serie.original_language }}</p> -->
                     <img :src='"img/" + serie.original_language + ".svg"' onerror="this.onerror=null; this.src='img/default.svg'" alt="">
-                    <p>VOTO : {{ serie.vote_average }}</p>
-        
                     <!-- VOTO IN STELLINE -->
-                    <!-- <p>VOTO : <span v-for="item in serie.stelle"><i :class="item" aria-hidden="true"></i></span></p> -->
-        
-        
+                    <p>VOTO : <span v-for="item in serie.stelle"><i :class="item" aria-hidden="true"></i></span></p>
                     <!-- <p>DESCRIZIONE : {{ serie.overview }}</p> -->
                 </a>
 
