@@ -5,7 +5,28 @@
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
-
+body{
+  background-color: rgb(46, 42, 42);
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 10%;
+}
+.box{
+  width: calc(100% / 4);
+  border: 1px solid white;
+  padding: 30px;
+  text-align: center;
+}
 img{
   width: 50px;
+}
+h1{
+  color: white;
+  text-align: center;
 }
