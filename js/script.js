@@ -4,20 +4,29 @@ var app = new Vue({
   data: {
     searchFilm: "",
     stars: [], // "fa fa-star", "fa fa-star-o"
-    films: []
+    films: [],
+    tvSeries: []
   },
 
   methods: {
     searchClick: function () {
       let apiFilms = "https://api.themoviedb.org/3/search/movie?api_key=bbed237dc6562aa068a11a0bbcb33c30&language=it-IT&query=" + this.searchFilm;
+      let apiTvSeries = "https://api.themoviedb.org/3/search/tv?api_key=bbed237dc6562aa068a11a0bbcb33c30&language=it-IT&page=1%20di%20carta&include_adult=false&query=" + this.searchFilm;
 
+      
       if (this.searchFilm !== "") { // evita il click vuoto
 
-        axios.get(apiFilms)
+        const rispostaOne = axios.get(apiFilms);
+        const rispostaTwo = axios.get(apiTvSeries);
+        
+        axios.all([rispostaOne, rispostaTwo])
           .then(risposta => {
 
-            this.films = risposta.data.results;
+            this.films = risposta[0].data.results;
             console.log(this.films);
+
+            this.tvSeries = risposta[1].data.results;
+            console.log(this.tvSeries);
 
             this.voto();
           });
