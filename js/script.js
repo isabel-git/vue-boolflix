@@ -21,29 +21,21 @@ var app = new Vue({
 
             this.voto();
           });
-
-
-        }
-
+      }
     },
     voto: function () {
 
-      let piene;
-      // console.log(this.films.length);
-      
       for (let j = 0; j < this.films.length; j++) {
-        
-        piene = Math.round(this.films[j].vote_average / 2);
-        
-        // console.log('le stelle piene sono: ',piene);
-  
+
+        let piene = Math.round(this.films[j].vote_average / 2);
+
         for (let i = 1; i <= 5; i++) {
-          if (i <= piene) {
-            
-            this.stars.push("fa fa-star")
-          }else {
-            this.stars.push("fa fa-star-o")
-          }
+          // if (i <= piene) {
+          //   this.stars.push("fa fa-star")
+          // }else {
+          //   this.stars.push("fa fa-star-o")
+          // }
+          i <= piene ? this.stars.push("fa fa-star") : this.stars.push("fa fa-star-o");
         }
 
         this.films[j].stelle = this.stars
