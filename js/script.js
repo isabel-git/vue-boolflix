@@ -35,7 +35,7 @@ var app = new Vue({
     voto: function (serieFilm) { // STELLINE
       for (let j = 0; j < serieFilm.length; j++) {
 
-        let piene = Math.round(serieFilm[j].vote_average / 2); // trasformo il voto in base 5
+        let piene = Math.ceil(serieFilm[j].vote_average / 2); // trasformo il voto in base 5
 
         for (let i = 1; i <= 5; i++) {
           i <= piene ? this.stars.push("fa fa-star") : this.stars.push("fa fa-star-o"); // condizione che sceglie se la stella è piena o vuota

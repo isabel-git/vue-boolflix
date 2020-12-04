@@ -6,27 +6,60 @@
   font-family: 'Roboto', sans-serif;
 }
 body{
-  background-color: rgb(46, 42, 42);
+  background-color: rgb(54, 54, 54);
 }
 a{
   text-decoration: none;
   color: white;
 }
+/* inizio header */
+header{
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background-color: black;
+}
+header .logo{
+  color: red;
+}
+/* inizio corpo della pagina */
 .flex{
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  padding: 10px 10%;
+  justify-content: center;
 }
 .box{
-  width: calc(100% / 4);
   border: 1px solid white;
-  padding: 30px;
-  text-align: center;
+  width: 342px;
+  min-height: 100px;
+  /* padding: 30px; */
+  /* text-align: center; */
+  position: relative;
 }
-img{
+img.flag{
   width: 50px;
 }
-h1{
+.box h1{
   color: white;
   text-align: center;
+}
+/* nascosti */
+.box .hidden{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: .5s ease;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  /* text-align: center; */
+  background-color: rgba(0, 0, 0, 0.7);
+
+}
+.box:hover .hidden {
+  opacity: 1;
 }
