@@ -32,48 +32,71 @@
         <main>
 
             <!-- ------ MOVIE ------ -->
-            <!-- <h1>movie</h1> -->
             <div class="flex">
 
                 <a href="#" class="box movie" v-for="(film, index) in films">
-                    <img class="poster" :src='"https://image.tmdb.org/t/p/w342" + film.poster_path' alt="">
+                    <img class="card" :src='"https://image.tmdb.org/t/p/w342" + film.poster_path'
+                        onerror="this.onerror=null; this.src='img/notfound.png'" alt="">
 
                     <div class="hidden">
-                        
-                        <h2>{{ film.title }}</h2>
-                        <p><i>{{ film.original_title }}</i></p>
-                        <img class="flag" :src='"img/" + film.original_language + ".svg"' onerror="this.onerror=null; this.src='img/default.svg'" alt="">
-                        <!-- VOTO IN STELLINE -->
-                        <p>VOTO : <span v-for="item in film.stelle"><i :class="item" aria-hidden="true"></i></span></p>
-                        <p>DESCRIZIONE : {{ film.overview }}</p>
 
+                        <div class="text">
+                            <!-- titolo movie -->
+                            <h2>{{ film.title }}</h2>
+                            <!-- titolo originale movie -->
+                            <p v-if="titleControll(film.title, film.original_title)"><i>{{ film.original_title }}</i>
+                            </p>
+                            <!-- bandiere movie -->
+                            <img class="flag" :src='"img/" + film.original_language + ".svg"'
+                                onerror="this.onerror=null; this.src='img/default.svg'" alt="">
+                            <!-- stelline movie -->
+                            <p>VOTO : <span v-for="item in film.stelle">
+                                    <i :class="item" aria-hidden="true"></i></span>
+                            </p>
+                            <!--descrizione movie-->
+                            <p class="overview">{{ film.overview }}</p>
+
+                        </div>
                     </div>
                 </a>
 
             </div>
 
+
             <!-------- SERIE TV -------->
-            <!-- <h1>serie tv</h1> -->
             <div class="flex">
 
                 <a href="#" class="box series" v-for="(serie, index) in tvSeries">
 
-                    <img class="poster" :src='"https://image.tmdb.org/t/p/w342" + serie.poster_path' alt="">
+                    <img class="card" :src='"https://image.tmdb.org/t/p/w342" + serie.poster_path'
+                        onerror="this.onerror=null; this.src='img/notfound.png'" alt="">
 
                     <div class="hidden">
 
-                        <h2>{{ serie.name }}</h2>
-                        <p><i>{{ serie.original_name }}</i></p>
-                        <img class="flag" :src='"img/" + serie.original_language + ".svg"' onerror="this.onerror=null; this.src='img/default.svg'" alt="">
-                        <!-- VOTO IN STELLINE -->
-                        <p>VOTO : <span v-for="item in serie.stelle"><i :class="item" aria-hidden="true"></i></span></p>
-                        <p class="overview">DESCRIZIONE : {{ serie.overview }}</p>
+                        <div class="text">
+
+                            <!-- titolo serie -->
+                            <h2>{{ serie.name }}</h2>
+                            <!-- titolo originale serie -->
+                            <p v-if="titleControll(serie.name, serie.original_name)"><i>{{ serie.original_name }}</i>
+                            </p>
+                            <!-- bandiere serie -->
+                            <img class="flag" :src='"img/" + serie.original_language + ".svg"'
+                                onerror="this.onerror=null; this.src='img/default.svg'" alt="">
+                            <!-- stelline serie -->
+                            <p>VOTO : <span v-for="item in serie.stelle">
+                                    <i :class="item" aria-hidden="true"></i></span>
+                            </p>
+                            <!--descrizione serie-->
+                            <p class="overview">{{ serie.overview }}</p>
+
+                        </div>
 
                     </div>
                 </a>
 
             </div>
-            
+
 
 
 
